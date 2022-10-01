@@ -5,6 +5,16 @@ const TodoForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const todo = event.target.todo.value; // this gets the value of the input based on the name
+
+    fetch("/api/add-todo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: todo,
+      }),
+    });
     props.setTodos((todos) => [...todos, { id: todos.length, name: todo }]);
   };
 
@@ -15,7 +25,7 @@ const TodoForm = (props) => {
          submit event (i.e. when enter is pressed or submit button is pressed).
       */}
       <form onSubmit={handleSubmit}>
-        <input class={styles.formInput} type="text" name="todo" />
+        <input className={styles.formInput} type="text" name="todo" />
         <button type="submit">Enter a todo</button>
       </form>
     </div>
