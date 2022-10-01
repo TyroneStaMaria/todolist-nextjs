@@ -1,0 +1,9 @@
+.container {
+  color: #ffffff;
+  width: 100%;
+  padding: 10px;
+}
+
+.container:nth-child(2n) {
+  background-color: #212922;
+}
